@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Frame;
-import java.awt.SystemTray;
 import java.awt.Window;
 import java.io.File;
 import java.io.FilenameFilter;
@@ -372,10 +371,6 @@ public class BPMNEditor extends BaseEditor {
 		Resources.add(EditorConstants.RESOURCES_URI + "language/editor", locale);
 		Resources.add(EditorConstants.RESOURCES_URI + "language/element", locale);
 		Resources.add(EditorConstants.RESOURCES_URI + "language/warning", locale);
-
-		if (Constants.JAVA_VERSION >= 1.6 && SystemTray.isSupported() && trayIcon == null) {
-			initSystemTray();
-		}
 
 	}
 

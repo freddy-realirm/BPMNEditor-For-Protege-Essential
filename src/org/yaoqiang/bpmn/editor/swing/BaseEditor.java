@@ -1,17 +1,13 @@
 package org.yaoqiang.bpmn.editor.swing;
 
-import java.awt.AWTException;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
-import java.awt.Image;
 import java.awt.Point;
-import java.awt.SystemTray;
 import java.awt.Toolkit;
-import java.awt.TrayIcon;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -164,8 +160,6 @@ public class BaseEditor extends JPanel {
 	protected JWindow openSplash;
 
 	protected JLabel statusBar;
-
-	protected TrayIcon trayIcon;
 
 	protected static Graph graph;
 
@@ -1047,42 +1041,6 @@ public class BaseEditor extends JPanel {
 			}
 		}
 		return a;
-	}
-
-	public void initSystemTray() {
-		SystemTray tray = SystemTray.getSystemTray();
-
-		Image image = null;
-		if (Constants.OS.startsWith("Windows")) {
-			image = Constants.LOGO_ICON.getImage().getScaledInstance(16, 16, Image.SCALE_SMOOTH);
-		} else {
-			image = Constants.LOGO_ICON.getImage().getScaledInstance(24, 24, Image.SCALE_SMOOTH);
-		}
-
-		trayIcon = new TrayIcon(image, "Yaoqiang-" + Constants.VERSION, null);
-		trayIcon.addMouseListener(new MouseAdapter() {
-
-			public void mouseReleased(MouseEvent e) {
-				if (e.getButton() == MouseEvent.BUTTON3) {
-					e.consume();
-				} else {
-					if (getFrame() != null) {
-						if (getFrame().isVisible()) {
-							getFrame().setVisible(false);
-						} else {
-							getFrame().setVisible(true);
-							getFrame().toFront();
-						}
-					}
-				}
-			}
-		});
-
-		try {
-			tray.add(trayIcon);
-		} catch (AWTException e) {
-			System.err.println(e);
-		}
 	}
 
 	public void configure() {
