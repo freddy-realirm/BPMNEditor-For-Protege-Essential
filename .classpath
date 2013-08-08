@@ -4,5 +4,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/yaoqiang-bpmn-2.2.6.jar"/>
 	<classpathentry kind="lib" path="lib/protege.jar"/>
+	<classpathentry kind="lib" path="lib/looks.jar"/>
+	<classpathentry kind="lib" path="lib/unicode_panel.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
