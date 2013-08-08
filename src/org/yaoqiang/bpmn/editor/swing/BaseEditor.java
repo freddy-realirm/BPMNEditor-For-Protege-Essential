@@ -926,19 +926,6 @@ public class BaseEditor extends JPanel {
 		}
 	}
 
-	public void setLookAndFeel(String clazz) {
-		Window window = SwingUtilities.windowForComponent(this);
-		if (window != null) {
-			try {
-				UIManager.setLookAndFeel(clazz);
-				Utils.saveToConfigureFile("Theme", clazz);
-				SwingUtilities.updateComponentTreeUI(window);
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
-		}
-	}
-
 	public void about() {
 		Window window = SwingUtilities.windowForComponent(this);
 
@@ -1084,38 +1071,6 @@ public class BaseEditor extends JPanel {
 			locale = new Locale("zh", "CN");
 		} else {
 			locale = new Locale(locstring);
-		}
-
-		try {
-			String def_theme = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
-			if (locstring.equals("zh_CN") && !Constants.OS.startsWith("Windows")) {
-				def_theme = "javax.swing.plaf.metal.MetalLookAndFeel";
-			}
-			String theme = Constants.SETTINGS.getProperty("Theme", def_theme);
-			try {
-				UIManager.setLookAndFeel(theme);
-			} catch (Exception ex) {
-				UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
-			}
-			javax.swing.plaf.FontUIResource f;
-			try {
-				if (locstring.equals("zh_CN")) {
-					f = new javax.swing.plaf.FontUIResource("AR PL UMing CN", Font.TRUETYPE_FONT, 12);
-				} else {
-					f = new javax.swing.plaf.FontUIResource("Sans Serif", Font.TRUETYPE_FONT, 12);
-				}
-			} catch (Exception ex) {
-				f = new javax.swing.plaf.FontUIResource("Label.font", Font.PLAIN, 12);
-			}
-			java.util.Enumeration<?> keys = UIManager.getDefaults().keys();
-			while (keys.hasMoreElements()) {
-				Object key = keys.nextElement();
-				Object value = UIManager.get(key);
-				if (value instanceof javax.swing.plaf.FontUIResource) {
-					UIManager.put(key, f);
-				}
-			}
-		} catch (Exception e1) {
 		}
 
 	}
