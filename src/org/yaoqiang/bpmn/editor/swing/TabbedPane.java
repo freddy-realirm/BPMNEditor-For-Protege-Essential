@@ -10,7 +10,6 @@ import java.awt.event.MouseListener;
 import java.util.EventObject;
 
 import javax.swing.JPopupMenu;
-import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
@@ -96,9 +95,9 @@ public class TabbedPane extends JTabbedPane implements MouseListener, ChangeList
 	public void stateChanged(ChangeEvent e) {
 		BPMNEditor editor = (BPMNEditor) getEditor(e);
 		Component c = ((JTabbedPane) e.getSource()).getSelectedComponent();
-		if (c.getName() != null && c.getName().equals("BPMNView")) {
+		if (c != null && c.getName() != null && c.getName().equals("BPMNView")) {
 			editor.getBpmnView().refreshView(editor.getGraphComponent().getGraph());
-		} else if (editor != null && c instanceof GraphComponent) {
+		} else if (editor != null && c!=null && c instanceof GraphComponent) {
 			boolean reset = false;
 			GraphComponent graphComponent = (GraphComponent) c;
 			if (editor.getCurrentGraphComponent() != c) {
@@ -114,15 +113,6 @@ public class TabbedPane extends JTabbedPane implements MouseListener, ChangeList
 				editor.getUndoManager().clear();
 			}
 
-			if (c.getName() != null && c.getName().equals("BPMNEditor")) {
-				((JRadioButtonMenuItem) editor.getDiagramsMenu().getMenuComponent(0)).setSelected(true);
-			} else {
-				for (Component item : editor.getDiagramsMenu().getMenuComponents()) {
-					if (item.getName().equals(c.getName())) {
-						((JRadioButtonMenuItem) item).setSelected(true);
-					}
-				}
-			}
 		}
 	}
 
