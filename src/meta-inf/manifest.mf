@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+
+Name: org/realirm/bpmn/slotwidget/BPMNSlotWidget.class
+Slot-Widget: True
+
