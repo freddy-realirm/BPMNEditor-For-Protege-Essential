@@ -259,7 +259,6 @@ public class ModelActions extends AbstractAction {
 				editor.setCurrentFile(null);
 				editor.closeGraphComponents();
 				editor.resetDiagramName();
-				BPMNEditorUtils.refreshDiagramList(editor, null);
 				graphComponent.getViewport().setOpaque(true);
 				graphComponent.getViewport().setBackground(Color.WHITE);
 				model.setBackgroundColor(Color.WHITE);
@@ -606,7 +605,6 @@ public class ModelActions extends AbstractAction {
 					editor.setDiagramName(value);
 				}
 
-				BPMNEditorUtils.refreshDiagramList(editor, root);
 			}
 		} else if (ELEMENT.equals(type)) {
 			dialog.initDialog().editBPMNElement(el);

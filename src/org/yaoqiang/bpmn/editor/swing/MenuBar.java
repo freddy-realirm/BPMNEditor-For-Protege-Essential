@@ -202,7 +202,6 @@ public class MenuBar extends JMenuBar {
 	protected void populateDiagramMenu(BaseEditor editor) {
 		JMenu menu = add(new JMenu(Resources.get("diagram")));
 		((BPMNEditor) editor).setDiagramsMenu(menu);
-		BPMNEditorUtils.refreshDiagramList((BPMNEditor) editor, null);
 	}
 
 	protected void populateHelpMenu(final BaseEditor editor) {

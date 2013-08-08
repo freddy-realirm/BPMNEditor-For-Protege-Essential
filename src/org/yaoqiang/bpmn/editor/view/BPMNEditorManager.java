@@ -69,7 +69,6 @@ public class BPMNEditorManager extends mxEventSource {
 						mxCell diagramCell = (mxCell) model.getCell(calledElement);
 						if (diagramCell != null) {
 							diagramCell.setValue(callActivity.getName());
-							BPMNEditorUtils.refreshDiagramList(editor, graph.getCurrentRoot());
 						}
 						if (editor.getGraphComponents().get(calledElement) != null) {
 							editor.getCenterPane().setTabTitle(calledElement, callActivity.getName());
@@ -81,7 +80,6 @@ public class BPMNEditorManager extends mxEventSource {
 							CallActivity callActivity = (CallActivity) cell.getValue();
 							GraphComponent graphComponent = editor.getGraphComponent(callActivity.getCalledElement());
 							editor.getCenterPane().remove(graphComponent);
-							BPMNEditorUtils.refreshDiagramList(editor, graph.getCurrentRoot());
 						}
 					}
 				} else if (eventName.equals(mxEvent.UNDO) || eventName.equals(mxEvent.REDO)) {
@@ -96,7 +94,6 @@ public class BPMNEditorManager extends mxEventSource {
 									mxCell diagramCell = (mxCell) model.getCell(calledElement);
 									if (diagramCell != null) {
 										diagramCell.setValue(callActivity.getName());
-										BPMNEditorUtils.refreshDiagramList(editor, graph.getCurrentRoot());
 									}
 									if (editor.getGraphComponent(calledElement) != null) {
 										editor.getCenterPane().setTabTitle(calledElement, callActivity.getName());

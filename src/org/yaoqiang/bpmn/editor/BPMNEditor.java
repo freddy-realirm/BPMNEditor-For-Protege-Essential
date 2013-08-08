@@ -234,7 +234,6 @@ public class BPMNEditor extends BaseEditor {
 			((CallActivity) cell.getValue()).setCalledElement(calledElement);
 		}
 		insertGraphComponent(calledElement, ((CallActivity) cell.getValue()).getName());
-		BPMNEditorUtils.refreshDiagramList(this, graph.getModel().getCell(calledElement));
 	}
 
 	public void insertGraphComponent(String id, String value) {

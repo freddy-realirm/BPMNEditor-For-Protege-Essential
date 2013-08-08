@@ -214,28 +214,6 @@ public class BPMNEditorUtils {
 		return externalDefinitions;
 	}
 
-	public static void refreshDiagramList(BPMNEditor editor, Object diagramCell) {
-		JMenu menu = editor.getDiagramsMenu();
-		menu.removeAll();
-		mxGraphModel model = BPMNEditor.getGraph().getModel();
-		ButtonGroup diagramGroup = new ButtonGroup();
-		if (diagramCell == null) {
-			diagramCell = model.getChildAt(model.getRoot(), 0);
-		}
-		int num = 1;
-		for (Object r : mxGraphModel.getChildren(model, model.getRoot())) {
-			mxCell root = (mxCell) r;
-			JRadioButtonMenuItem item = new JRadioButtonMenuItem(editor.bind(num++ + ": " + (String) root.getValue(),
-					ModelActions.getOpenDiagramAction(root.getId())));
-			item.setName(root.getId());
-			if (root == diagramCell) {
-				item.setSelected(true);
-			}
-			diagramGroup.add(item);
-			menu.add(item);
-		}
-	}
-
 	public static void insertAdditionalParticipant(BPMNGraph graph, String id, String value, boolean toTop, Object parent) {
 		mxGraphModel model = graph.getModel();
 		if (model.getCell(id) != null) {
@@ -679,7 +657,6 @@ public class BPMNEditorUtils {
 		}
 		GraphModel model = graph.getModel();
 		editor.setDiagramName((String) model.getValue(model.getChildAt(model.getRoot(), 0)));
-		BPMNEditorUtils.refreshDiagramList(editor, null);
 		if (codec.isAutolayout()) {
 			for (Object pool : graph.getAllPools()) {
 				GraphUtils.arrangeSwimlaneSize(graph, pool, false, false, false);
