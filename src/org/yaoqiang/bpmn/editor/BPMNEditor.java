@@ -14,7 +14,6 @@ import java.util.List;
 
 import javax.swing.JComponent;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
@@ -86,8 +85,7 @@ public class BPMNEditor extends BaseEditor {
 
 	public BPMNEditor(boolean createFrame) {
 		initEditor();
-		this.appTitle = Resources.get("title") + " " + Constants.VERSION;
-
+		
 		bpmnElementDialog = new BPMNElementDialog(this);
 
 		BPMNEditorManager bpmnEditorManager = new BPMNEditorManager(this);
@@ -375,20 +373,6 @@ public class BPMNEditor extends BaseEditor {
 
 	public void setCurrentFile(File file) {
 		currentFile = file;
-	}
-
-	public void updateTitle() {
-		Window window = SwingUtilities.windowForComponent(this);
-		if (window != null && window instanceof JFrame) {
-			String title = Resources.get("newDiagram");
-			if (currentFile != null) {
-				title = currentFile.getAbsolutePath();
-			}
-			if (modified) {
-				title += "*";
-			}
-			((JFrame) window).setTitle(title + " - " + appTitle);
-		}
 	}
 
 	public void restart() {

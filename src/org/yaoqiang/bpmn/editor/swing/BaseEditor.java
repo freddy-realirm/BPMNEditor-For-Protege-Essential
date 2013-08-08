@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Point;
 import java.awt.Toolkit;
@@ -52,7 +51,6 @@ import javax.swing.JToolBar;
 import javax.swing.JWindow;
 import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 
 import org.yaoqiang.bpmn.editor.action.ModelActions;
 import org.yaoqiang.bpmn.editor.util.EditorConstants;
@@ -647,9 +645,6 @@ public class BaseEditor extends JPanel {
 
 		firePropertyChange("modified", oldValue, modified);
 
-		if (oldValue != modified) {
-			updateTitle();
-		}
 	}
 
 	public mxUndoManager getUndoManager() {
@@ -658,7 +653,6 @@ public class BaseEditor extends JPanel {
 
 	public void setCurrentFile(File file) {
 		currentFile = file;
-		updateTitle();
 	}
 
 	public static File getCurrentFile() {
@@ -775,17 +769,6 @@ public class BaseEditor extends JPanel {
 		statusBar.setText(msg);
 	}
 
-	public void updateTitle() {
-		Window window = SwingUtilities.windowForComponent(this);
-		if (window != null && window instanceof JFrame) {
-			String title = (currentFile != null) ? currentFile.getAbsolutePath() : Resources.get("newDiagram");
-			if (modified) {
-				title += "*";
-			}
-			((JFrame) window).setTitle(title + " - " + appTitle);
-		}
-	}
-
 	public void progress(boolean start) {
 		Window window = SwingUtilities.windowForComponent(this);
 		if (Constants.OS.startsWith("Windows")) {
@@ -893,8 +876,6 @@ public class BaseEditor extends JPanel {
 		installWindowListener();
 
 		createGraphOverviewWindow(frame, graphOverview);
-
-		updateTitle();
 
 		return frame;
 	}
