@@ -127,8 +127,6 @@ public class BaseEditor extends JPanel {
 
 	public static Locale locale = Locale.getDefault();
 
-	public static SplashWindow splash;
-
 	protected static File currentFile;
 
 	protected boolean modified = false;

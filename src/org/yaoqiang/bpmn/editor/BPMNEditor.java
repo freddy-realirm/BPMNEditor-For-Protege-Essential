@@ -33,7 +33,6 @@ import org.yaoqiang.bpmn.editor.swing.BaseEditor;
 import org.yaoqiang.bpmn.editor.swing.MainToolBar;
 import org.yaoqiang.bpmn.editor.swing.MenuBar;
 import org.yaoqiang.bpmn.editor.swing.Palettes;
-import org.yaoqiang.bpmn.editor.swing.SplashWindow;
 import org.yaoqiang.bpmn.editor.swing.TabbedPane;
 import org.yaoqiang.bpmn.editor.util.BPMNEditorConstants;
 import org.yaoqiang.bpmn.editor.util.BPMNEditorUtils;
@@ -426,17 +425,11 @@ public class BPMNEditor extends BaseEditor {
 			}
 		}
 
-		splash = new SplashWindow();
 		BPMNEditor editor = new BPMNEditor();
 		editor.showFrame(true);
 
 		if (args.length == 1) {
 			editor.openFile(args[0]);
-		}
-
-		if (splash != null) {
-			splash.dispose();
-			splash = null;
 		}
 
 		if (spellChecker != null) {

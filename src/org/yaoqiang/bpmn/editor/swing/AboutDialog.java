@@ -69,7 +69,6 @@ public class AboutDialog extends JDialog {
 
 		JPanel content = new JPanel();
 		content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
-		content.add(SplashWindow.getSplashPanel());
 
 		getContentPane().add(content, BorderLayout.CENTER);
 
