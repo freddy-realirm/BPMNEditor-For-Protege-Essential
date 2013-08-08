@@ -22,7 +22,6 @@ import javax.swing.JOptionPane;
 import org.w3c.dom.Document;
 import org.yaoqiang.bpmn.editor.BPMNEditor;
 import org.yaoqiang.bpmn.editor.swing.BaseEditor;
-import org.yaoqiang.bpmn.editor.swing.MenuBar;
 import org.yaoqiang.bpmn.editor.util.EditorConstants;
 import org.yaoqiang.bpmn.model.elements.XMLElement;
 import org.yaoqiang.graph.model.GraphModel;
@@ -137,7 +136,6 @@ public class EditorActions extends AbstractAction {
 				com.setGridVisible(enabled);
 			}
 			editor.getCurrentGraphComponent().repaint();
-			MenuBar.getGridMenuItem().setSelected(enabled);
 		} else if (type == GRID_STYLE) {
 			graphComponent.setGridStyle((int) doubleValue);
 			for (GraphComponent com : editor.getGraphComponents().values()) {

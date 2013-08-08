@@ -816,11 +816,6 @@ public class BaseEditor extends JPanel {
 	public void createGraphOverviewWindow(Frame window, mxGraphOutline graphOutline) {
 		if (Constants.SETTINGS.getProperty("showFloatingOutline", Constants.OS.startsWith("Windows") ? "1" : "0").equals("1")) {
 			graphOverviewWindow = new JDialog(window, Resources.get("Outline"));
-			graphOverviewWindow.addWindowListener(new WindowAdapter() {
-				public void windowClosing(WindowEvent e) {
-					MenuBar.getOutlineMenuItem().setSelected(false);
-				}
-			});
 			graphOverviewWindow.setModal(false);
 			graphOverviewWindow.add(graphOutline);
 
@@ -862,12 +857,11 @@ public class BaseEditor extends JPanel {
 		}
 	}
 
-	public JFrame createFrame(JMenuBar menuBar) {
+	public JFrame createFrame() {
 		JFrame frame = new JFrame();
 		frame.setIconImage(Constants.LOGO_ICON.getImage());
 		frame.getContentPane().add(this);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		frame.setJMenuBar(menuBar);
 		frame.pack();
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

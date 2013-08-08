@@ -29,7 +29,6 @@ import org.yaoqiang.bpmn.editor.swing.BPMNGraphComponent;
 import org.yaoqiang.bpmn.editor.swing.BPMNViewComponent;
 import org.yaoqiang.bpmn.editor.swing.BaseEditor;
 import org.yaoqiang.bpmn.editor.swing.MainToolBar;
-import org.yaoqiang.bpmn.editor.swing.MenuBar;
 import org.yaoqiang.bpmn.editor.swing.Palettes;
 import org.yaoqiang.bpmn.editor.swing.TabbedPane;
 import org.yaoqiang.bpmn.editor.util.BPMNEditorConstants;
@@ -98,7 +97,7 @@ public class BPMNEditor extends BaseEditor {
 		initFragmentsPalette();
 
 		if (createFrame) {
-			frame = createFrame(new MenuBar(this));
+			frame = createFrame();
 		}
 	}
 
@@ -381,7 +380,7 @@ public class BPMNEditor extends BaseEditor {
 		if (left instanceof JSplitPane && Constants.SETTINGS.getProperty("showOutline", "1").equals("1")) {
 			((JSplitPane) left).setDividerLocation(180);
 		}
-		createFrame(new MenuBar(this)).setVisible(true);
+		createFrame().setVisible(true);
 	}
 
 	public static void main(String[] args) {

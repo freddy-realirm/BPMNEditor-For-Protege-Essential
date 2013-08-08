@@ -6,7 +6,6 @@ import javax.swing.JApplet;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
-import org.yaoqiang.bpmn.editor.swing.MenuBar;
 
 /**
  * BPMNEditorApplet
@@ -33,7 +32,6 @@ public class BPMNEditorApplet extends JApplet {
 	private void createGUI() {
 		BPMNEditor editor = new BPMNEditor(false);
 		setContentPane(editor);
-		setJMenuBar(new MenuBar(editor));
 		editor.createGraphOverviewWindow((Frame) SwingUtilities.windowForComponent(this), editor.getGraphOverviewComponent());
 		String filepath = this.getParameter("filepath");
 		if (filepath != null) {
